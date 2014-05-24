@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form Frame
+     * Creates new form GUI
      */
     public GUI() {
         initComponents();
