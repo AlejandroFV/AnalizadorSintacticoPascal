@@ -9,7 +9,7 @@ package Model;
  * @author BuiRai
  */
 public class test {
-
+//No entiendo
     /**
      * @param args the command line arguments
      */
