@@ -5,9 +5,6 @@
 package View;
 
 import Controller.analizadorControl;
-import java.awt.Image;
-import java.awt.Toolkit;
-import Model.*;
 import java.io.*;
 import javax.swing.JOptionPane;
 
