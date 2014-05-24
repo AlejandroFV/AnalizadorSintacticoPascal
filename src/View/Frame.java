@@ -129,7 +129,7 @@ public class Frame extends javax.swing.JFrame {
             writer.write(textAreaEntrada.getText());
             writer.close();
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo guardar archivo de entrada debido a " + ex.toString());
+            JOptionPane.showMessageDialog(null, "Imposible guardar archivo: " + ex.toString());
         }
         analizadorControl a = new analizadorControl();
         textAreaSalida.setText(a.parsear());
