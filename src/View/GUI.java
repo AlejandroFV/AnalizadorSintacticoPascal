@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Rocho
+ * @author Alejandro
  */
 public class GUI extends javax.swing.JFrame {
     /**
