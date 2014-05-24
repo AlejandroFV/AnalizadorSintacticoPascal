@@ -163,7 +163,7 @@ public class Analizador {
                 removerSecuencia();
                 return true;
             }else{
-                throw new sintaxError("se esperaba un identificador");
+                throw new sintaxError("Se esperaba un identificador");
             }
         }else{
             throw new sintaxError("Se esperaba un identificador y no hay nada");
