@@ -14,7 +14,7 @@ public class test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("^H9l^JJ^Hola");
+        System.out.println("^H9l^JJ^Hola"); //Que se supone que hace esto
         System.out.println("¿PARA QUE DIABLOS SIRVE ESTA CLASE?");
     }
 }
