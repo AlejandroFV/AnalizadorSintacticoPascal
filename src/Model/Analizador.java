@@ -20,7 +20,7 @@ public class Analizador {
     public String actualLexer = "";
 
     public void getTokens() throws IOException, sintaxError {
-        Reader reader = new BufferedReader(new FileReader("codigo.txt"));
+        Reader reader = new BufferedReader(new FileReader("salida.txt"));
         PascalLexer lexer = new PascalLexer(reader);
         listaTokens = new ArrayList();
         listaLexemas = new ArrayList();
@@ -32,7 +32,7 @@ public class Analizador {
             }
             switch (token) {
                 case ERROR:
-                    throw new sintaxError("El lexema \" "+ lexer.yytext() +" \" está indefinido.");
+                    throw new sintaxError(lexer.yytext() + ": lexema indefinido.");
                 default:
                     listaTokens.add(token);
                     listaLexemas.add(lexer.yytext());
@@ -61,16 +61,15 @@ public class Analizador {
         if(!(listaTokens.isEmpty())){
             if (listaTokens.get(0).toString().equals("RESERVADA") && (listaLexemas.get(0).toString().equals("PROGRAM")
                     || listaLexemas.get(0).toString().equals("program"))) {
-                    actualLexer = listaLexemas.get(0).toString();
-                    listaTokens.remove(0);
-                    listaLexemas.remove(0);
+                    removerSecuencia();
                     program();
                 }else{
-                    throw new sintaxError("Error de sintaxis, se esperaba la instruccion PROGRAM\n se ha encontrado "+actualLexer);
+                    actualLexer = listaLexemas.get(0).toString();
+                    throw new sintaxError("Se esperaba la instruccion PROGRAM\nSe ha encontrado: " + actualLexer);
                 }
-            return "La sintáxis de la sentencia escrita, es correcta.";
+            return "Reeeebien tu sentencia. Aye!";
         }
-        return "No se encontró una sentencia a analizar.";
+        return "Vacío. Escribe algo";
     }
     
     public boolean program()throws sintaxError{
@@ -78,27 +77,40 @@ public class Analizador {
             removerSecuencia();
             if (!listaTokens.isEmpty() && listaTokens.get(0).toString().equals("IDENT")){
                 removerSecuencia();
-                if(!(listaTokens.isEmpty())&&listaTokens.get(0).toString().equals("SEMI")){
+                if(!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("SEMI")){
                     removerSecuencia();
-                    if(!(listaTokens.isEmpty())){
-                        block();
-                        if(!(listaTokens.isEmpty())&&listaTokens.get(0).toString().equals("PUNTO")){
+                    blanco();
+                    if(!(listaTokens.isEmpty()) && (listaTokens.get(0).toString().equals("RESERVADA") && (listaLexemas.get(0).toString().equals("BEGIN") || listaLexemas.get(0).toString().equals("begin")))){
+                        removerSecuencia();
+                        //block();
+                        if (!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("BLANCO")) {
                             removerSecuencia();
-                            return true;
-                        }else{
-                            throw new sintaxError("Error, se esperaba un '.'");
+                            if(!(listaTokens.isEmpty()) && (listaTokens.get(0).toString().equals("RESERVADA") && (listaLexemas.get(0).toString().equals("END") || listaLexemas.get(0).toString().equals("end")))){
+                                removerSecuencia();
+                                if(!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("DOT")){
+                                    removerSecuencia();
+                                    return true;
+                                }else{
+                                    throw new sintaxError("Se esperaba '.'");
+                                }
+                            }else{
+                                throw new sintaxError("Se esperaba 'END'");
+                            }
+                        }
+                        else{
+                            throw new sintaxError("Se esperaba un espacio.");
                         }
                     }else{
-                        return true;
+                        throw new sintaxError("Se esperaba 'BEGIN'");
                     }
                 }else{
-                    throw new sintaxError("Error de sintaxis despues de el identificador " +actualLexer+ ", se esperaba un ;");
+                    throw new sintaxError("Despues de " + actualLexer + " se esperaba un ';'");
                 }
             }else{
-                throw new sintaxError("Error de sintaxis después de la instrucción \" PROGRAM \".\nNOTA: Se esperaba un identificador");
+                throw new sintaxError("Se esperaba un identificador");
             }
         }else{
-            throw new sintaxError("Error de sintaxis después de la instrucción \" PROGRAM \".\nNOTA: Se esperaba un espacio.");
+            throw new sintaxError("Se esperaba un espacio despues de PROGRAM.");
         } 
     }
 
