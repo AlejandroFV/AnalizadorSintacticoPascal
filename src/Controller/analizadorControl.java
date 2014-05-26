@@ -17,7 +17,7 @@ public class analizadorControl {
     public String parsear(){
         Analizador a = new Analizador();
        
-        String texto = "";
+        String texto;
         try {
             a.getTokens();
             texto = a.comienzo();
