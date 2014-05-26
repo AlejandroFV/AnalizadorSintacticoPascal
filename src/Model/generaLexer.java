@@ -13,7 +13,7 @@ import java.io.File;
 public class generaLexer {
 
     /**
-     * @param args the command line arguments
+     * @param path
      */
     public static void generarLexer(String path){
         File file=new File(path);
