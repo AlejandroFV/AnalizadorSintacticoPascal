@@ -251,11 +251,7 @@ public class Analizador {
             if(identifier()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals("=")){
                     removerSecuencia();
-                    if(constant()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return constant();
                 }else{
                     throw new sintaxError("se esperaba el operador = despues de "+actualLexer);
                 }
@@ -277,11 +273,7 @@ public class Analizador {
             if(identifier()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals("=")){
                     removerSecuencia();
-                    if(type()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return type();
                 }else{
                     throw new sintaxError("se esperaba eloperador = despues de "+actualLexer);
                 }
@@ -303,19 +295,11 @@ public class Analizador {
             if(identifier()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(",")){
                     removerSecuencia();
-                    if(variableDeclaration()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return variableDeclaration();
                 }else{
                     if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":")){
                         removerSecuencia();
-                        if(type()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return type();
                     }else{
                         throw new sintaxError("se esperaban : despues de "+actualLexer);
                     }
@@ -337,11 +321,7 @@ public class Analizador {
                if(constantIdentifier()){
                    return true;
                }else{
-                   if(unsignedNumber()){
-                       return true;
-                   }else{
-                       return false;
-                   }
+                    return unsignedNumber();
                }
             }else{
                 return false;
@@ -435,11 +415,7 @@ public class Analizador {
                 if(structuredType()){
                     return true;
                 }else{
-                    if(identifier()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return identifier();
                 }
             }
         }else{
@@ -460,11 +436,7 @@ public class Analizador {
                 if(subrangeType()){
                     return true;
                 }else{
-                    if(identifier()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return identifier();
                 }
             }
         }else{
@@ -488,11 +460,7 @@ public class Analizador {
                     if(setType()){
                         return true;
                     }else{
-                        if(fileType()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return fileType();
                     }
                 }
             }
@@ -516,11 +484,7 @@ public class Analizador {
                 (listaLexemas.get(0).toString().equals("of")||listaLexemas.get(0).toString().equals("OF"))){
                     removerSecuencia();
                     blanco();
-                    if(type()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return type();
                 }else{
                     throw new sintaxError("se esperaba la palabra of despues de "+actualLexer);
                 }
@@ -547,11 +511,7 @@ public class Analizador {
                 (listaLexemas.get(0).toString().equals("of")||listaLexemas.get(0).toString().equals("OF"))){
                     removerSecuencia();
                     blanco();
-                    if(simpleType()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return simpleType();
                 }else{
                     throw new sintaxError("se esperaba la palabra of despues de "+actualLexer);
                 }
@@ -585,11 +545,7 @@ public class Analizador {
                                     if(listaTokens.get(0).toString().equals("RESERVADA")&&
                                       (listaLexemas.get(0).toString().equals("OF")||listaLexemas.get(0).toString().equals("of"))){
                                         removerSecuencia();
-                                        if(type()){
-                                            return true;
-                                        }else{
-                                            return false;
-                                        }
+                                        return type();
                                     }else{
                                         throw new sintaxError("se esperaba la palabra of y se ha encontrado "+actualLexer);
                                     }
@@ -605,11 +561,7 @@ public class Analizador {
                                 if(listaTokens.get(0).toString().equals("RESERVADA")&&
                                   (listaLexemas.get(0).toString().equals("OF")||listaLexemas.get(0).toString().equals("of"))){
                                     removerSecuencia();
-                                    if(type()){
-                                        return true;
-                                    }else{
-                                        return false;
-                                    }
+                                    return type();
                                 }else{
                                     throw new sintaxError("se esperaba un indice despues de "+actualLexer);
                                 }
@@ -667,11 +619,7 @@ public class Analizador {
     public boolean fieldList() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(fixedPart()){
-                return true;
-            }else{
-                return false;
-            }
+            return fixedPart();
         }else{
             return false;
         }
@@ -687,11 +635,7 @@ public class Analizador {
             if(recordSection()){
                 if(listaTokens.get(0).toString().equals("SEMI")){
                     removerSecuencia();
-                    if(fixedPart()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return fixedPart();
                 }else{
                     throw new sintaxError("se esperaba ; despues de "+actualLexer);
                 }
@@ -716,11 +660,7 @@ public class Analizador {
                     if(identifier()){
                         if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":")){
                             removerSecuencia();
-                            if(type()){
-                                return true;
-                            }else{
-                                return false;
-                            }
+                            return type();
                         }else{
                             throw new sintaxError("se esperaba un : despues de "+actualLexer);
                         }
@@ -730,11 +670,7 @@ public class Analizador {
                 }else{
                     if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":")){
                         removerSecuencia();
-                        if(type()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return type();
                     }else{
                         throw new sintaxError("se esperaba : despues de "+actualLexer);
                     }
@@ -843,11 +779,7 @@ public class Analizador {
             if(procedureDeclaration()){
                 return true;
             }else{
-                if(functionDeclaration()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return functionDeclaration();
             }
         }else{
             return false;
@@ -862,11 +794,7 @@ public class Analizador {
         blanco();
         if(!listaTokens.isEmpty()){
             if(procedureHeading()){
-                if(block()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return block();
             }else{
                 return false;
             }
@@ -876,6 +804,7 @@ public class Analizador {
     }
     /**
      * FALTA RECURSIVIDAD
+     * @return 
      * @throws sintaxError 
      */
     public boolean procedureHeading() throws sintaxError{
@@ -934,20 +863,12 @@ public class Analizador {
                 if(listaTokens.get(0).toString().equals("RESERVADA")&&(listaLexemas.get(0).toString().equals("var")||
                 listaLexemas.get(0).toString().equals("VAR"))){
                     removerSecuencia();
-                    if(parameterGroup()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return parameterGroup();
                 }else{
                     if(listaTokens.get(0).toString().equals("RESERVADA")&&(listaLexemas.get(0).toString().equals("function")||
                     listaLexemas.get(0).toString().equals("FUNCTION"))){
                         removerSecuencia();
-                        if(parameterGroup()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return parameterGroup();
                     }else{
                         if(listaTokens.get(0).toString().equals("RESERVADA")&&(listaLexemas.get(0).toString().equals("procedure")||
                         listaLexemas.get(0).toString().equals("PROCEDURE"))){
@@ -955,11 +876,7 @@ public class Analizador {
                             if(identifier()){
                                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(",")){
                                     removerSecuencia();
-                                    if(identifier()){
-                                        return true;
-                                    }else{
-                                        return false;
-                                    }
+                                    return identifier();
                                 }else{
                                     return true;
                                 }
@@ -992,11 +909,7 @@ public class Analizador {
                 }else{
                     if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":")){
                         removerSecuencia();
-                        if(identifier()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return identifier();
                     }else{
                         throw new sintaxError("se esperaban : despues de "+actualLexer);
                     }
@@ -1017,11 +930,7 @@ public class Analizador {
         blanco();
         if(!listaTokens.isEmpty()){
             if(functionHeading()){
-                if(block()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return block();
             }else{
                 return false;
             }
@@ -1031,6 +940,7 @@ public class Analizador {
     }
     /**
      * FALTO RECURSIVIDAD
+     * @return 
      * @throws sintaxError 
      */
     public boolean functionHeading() throws sintaxError{
@@ -1107,11 +1017,7 @@ public class Analizador {
                 if(unsignedNumber()){
                     if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":")){
                         removerSecuencia();
-                        if(unlabelledStatement()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return unlabelledStatement();
                     }else{
                         throw new sintaxError("se esperaban : despues de "+actualLexer);
                     }
@@ -1131,11 +1037,7 @@ public class Analizador {
     public boolean unlabelledStatement() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(simpleStatement()||structuredStatement()){
-                return true;
-            }else{
-                return false;
-            }
+            return simpleStatement()||structuredStatement();
         }else{
             return false;
         }
@@ -1148,11 +1050,7 @@ public class Analizador {
     public boolean simpleStatement() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(assignmentStatement()||procedureStatement()||goToStatement()){
-                return true;
-            }else{
-                return false;
-            }
+            return assignmentStatement()||procedureStatement()||goToStatement();
         }else{
             return true;
         }
@@ -1168,22 +1066,14 @@ public class Analizador {
             if(variable()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":=")){
                     removerSecuencia();
-                    if(expression()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return expression();
                 }else{
                     throw new sintaxError("se esperaba el operador := despues de "+actualLexer);
                 }
             }else{
                 if(identifier()){
                     if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(":=")){
-                        if(expression()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return expression();
                     }else{
                         throw new sintaxError("se esperaba el operador := despues de "+actualLexer);
                     }
@@ -1203,11 +1093,7 @@ public class Analizador {
     public boolean variable() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(identifier()||componentVariable()||variable()){
-                return true;
-            }else{
-                return false;
-            }
+            return identifier()||componentVariable()||variable();
         }else{
             return false;
         }
@@ -1220,11 +1106,7 @@ public class Analizador {
     public boolean componentVariable() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(indexedVariable()||fieldDesignator()||variable()){
-                return true;
-            }else{
-                return false;
-            }
+            return indexedVariable()||fieldDesignator()||variable();
         }else{
             return false;
         }
@@ -1270,11 +1152,7 @@ public class Analizador {
         if(!listaTokens.isEmpty()){
             if(simpleExpression()){
                 if(relationalOperator()){
-                    if(expression()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return expression();
                 }else{
                     //puede que despues de la expresion no venga nada
                     return false;
@@ -1298,19 +1176,11 @@ public class Analizador {
                 return true;
             }else{
                 if(sign()){
-                    if(term()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return term();
                 }else{
                     if(simpleExpression()){
                         if(addingOperator()){
-                            if(term()){
-                                return true;
-                            }else{
-                                return false;
-                            }
+                            return term();
                         }else{
                             return false;
                         }
@@ -1336,11 +1206,7 @@ public class Analizador {
             }else{
                 if(term()){
                     if(multiplyingOperator()){
-                        if(factor()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return factor();
                     }else{
                         return false;
                     }
@@ -1387,11 +1253,7 @@ public class Analizador {
                             }else{
                                 if(listaTokens.get(0).toString().equals("RESERVADA")&& ( listaLexemas.get(0).toString().equals("not")||
                                   listaLexemas.get(0).toString().equals("NOT") ) ){
-                                    if(factor()){
-                                        return true;
-                                    }else{
-                                        return false;
-                                    }
+                                    return factor();
                                 }else{
                                     return false;
                                 }
@@ -1452,12 +1314,7 @@ public class Analizador {
                 if(string()){
                     return true;
                 }else{
-                    if(identifier()){
-                        //NIL
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return identifier();
                 }
             }
         }
@@ -1503,11 +1360,7 @@ public class Analizador {
     public boolean actualParameter() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(expression()||variable()||identifier()){
-                return true;
-            }else{
-                return false;
-            }
+            return expression()||variable()||identifier();
         }else{
             return false;
         }   
@@ -1651,11 +1504,7 @@ public class Analizador {
             if(variable()){
                 if(listaTokens.get(0).toString().equals("PUNTO")){
                     removerSecuencia();
-                    if(identifier()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return identifier();
                 }else{
                     throw new sintaxError("se esperaba un punto despues de "+actualLexer);
                 }
@@ -1709,11 +1558,7 @@ public class Analizador {
             if(listaTokens.get(0).toString().equals("RESERVADA")&&( listaLexemas.get(0).toString().equals("goto")||
                listaLexemas.get(0).toString().equals("GOTO") )){
                 removerSecuencia();
-                if(unsignedNumber()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return unsignedNumber();
             }else{
                 throw new sintaxError("se esperaba la palabra goto despues de "+actualLexer);
             }
@@ -1729,11 +1574,7 @@ public class Analizador {
     public boolean structuredStatement() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(compoundStatement()||conditionalStatement()||repetitiveStatement()||withStatement()){
-                return true;
-            }else{
-                return false;
-            }
+            return compoundStatement()||conditionalStatement()||repetitiveStatement()||withStatement();
         }else{
             return false;
         }
@@ -1775,11 +1616,7 @@ public class Analizador {
     public boolean conditionalStatement() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(ifStatement()||caseStatement()){
-                return true;
-            }else{
-                return false;
-            }
+            return ifStatement()||caseStatement();
         }else{
             return false;
         }
@@ -1803,11 +1640,7 @@ public class Analizador {
                             if(listaTokens.get(0).toString().equals("RESERVADA")&&( listaLexemas.get(0).toString().equals("else")||
                                listaLexemas.get(0).toString().equals("ELSE"))){
                                 removerSecuencia();
-                                if(statement()){
-                                    return true;
-                                }else{
-                                    return false;
-                                }
+                                return statement();
                             }else{
                                 return true;
                             }
@@ -1877,11 +1710,7 @@ public class Analizador {
             if(caseLabelList()){
                 if(listaTokens.get(0).toString().equals("OP")&& listaLexemas.get(0).toString().equals(":")){
                     removerSecuencia();
-                    if(statement()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return statement();
                 }else{
                     throw new sintaxError("se esperaban : despues de "+actualLexer);
                 }
@@ -1903,11 +1732,7 @@ public class Analizador {
             if(constant()){
                 if(listaTokens.get(0).toString().equals("OP")&& listaLexemas.get(0).toString().equals(",")){
                     removerSecuencia();
-                    if(caseLabelList()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return caseLabelList();
                 }else{
                     return true;
                 }
@@ -1926,11 +1751,7 @@ public class Analizador {
     public boolean repetitiveStatement() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(whileStatement()||repeatStatemant()||forStatement()){
-                return true;
-            }else{
-                return false;
-            }
+            return whileStatement()||repeatStatemant()||forStatement();
         }else{
             return false;
         }
@@ -1950,11 +1771,7 @@ public class Analizador {
                     if(listaTokens.get(0).toString().equals("RESERVADA")&&(listaLexemas.get(0).toString().equals("do")||
                        listaLexemas.get(0).toString().equals("DO"))){
                         removerSecuencia();
-                        if(statement()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return statement();
                     }else{
                         throw new sintaxError("se esperaba la palabra do despues de "+actualLexer);
                     }
@@ -1983,11 +1800,7 @@ public class Analizador {
                     if(listaTokens.get(0).toString().equals("RESERVADA")&&(listaLexemas.get(0).toString().equals("until")||
                        listaLexemas.get(0).toString().equals("UNTIL"))){
                         removerSecuencia();
-                        if(expression()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return expression();
                     }else{
                         throw new sintaxError("se esperaba la palabra until despues de "+actualLexer);
                     }
@@ -2016,11 +1829,7 @@ public class Analizador {
                     if(listaTokens.get(0).toString().equals("RESERVADA")&&( listaLexemas.get(0).toString().equals("do")||
                        listaLexemas.get(0).toString().equals("DO") )){
                         removerSecuencia();
-                        if(statement()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return statement();
                     }else{
                         throw new sintaxError("se esperaba la palabra do despues de "+actualLexer);
                     }
@@ -2045,11 +1854,7 @@ public class Analizador {
             if(variable()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(",")){
                     removerSecuencia();
-                    if(recordVariableList()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return recordVariableList();
                 }else{
                     throw new sintaxError("se esperaba una , despues de "+actualLexer);
                 }
@@ -2077,11 +1882,7 @@ public class Analizador {
                         if(forList()){
                             if(listaTokens.get(0).toString().equals("RESERVADA")&&( listaLexemas.get(0).toString().equals("do")||
                                listaLexemas.get(0).toString().equals("DO") )){
-                                if(statement()){
-                                    return true;
-                                }else{
-                                    return false;
-                                }
+                                return statement();
                             }else{
                                 throw new sintaxError("se esperaba la palabra do despues de "+actualLexer);
                             }
@@ -2112,19 +1913,11 @@ public class Analizador {
             if(expression()){
                 if(listaTokens.get(0).toString().equals("RESERVADA")&& (listaLexemas.get(0).toString().equals("to")||
                    listaLexemas.get(0).toString().equals("TO"))){
-                    if(expression()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return expression();
                 }else{
                     if(listaTokens.get(0).toString().equals("RESERVADA")&& (listaLexemas.get(0).toString().equals("downto")||
                        listaLexemas.get(0).toString().equals("DOWNTO"))){
-                        if(expression()){
-                            return true;
-                        }else{
-                            return false;
-                        }
+                        return expression();
                     }else{
                         throw new sintaxError("se esperaba la palabra to o downto despues de "+actualLexer);
                     }
@@ -2146,11 +1939,7 @@ public class Analizador {
         if(!listaTokens.isEmpty()){
             if(element()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals(",")){
-                    if(elementList()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return elementList();
                 }else{
                     return true;
                 }
@@ -2172,11 +1961,7 @@ public class Analizador {
             if(expression()){
                 if(listaTokens.get(0).toString().equals("OP")&&listaLexemas.get(0).toString().equals("..")){
                     removerSecuencia();
-                    if(expression()){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return expression();
                 }else{
                     return true;
                 }
