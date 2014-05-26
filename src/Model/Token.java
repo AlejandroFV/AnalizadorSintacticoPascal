@@ -10,7 +10,6 @@ package Model;
  * @author Alejandro
  */
 public enum Token {
-    
     OP,
     CHAR,
     INT,
