@@ -113,7 +113,11 @@ public class Analizador {
             throw new sintaxError("Se esperaba un espacio despues de PROGRAM.");
         } 
     }
-
+    /**
+     * 
+     * @return
+     * @throws sintaxError 
+     */
     private boolean block() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
@@ -121,13 +125,30 @@ public class Analizador {
                 if(constantDefinitionPart()){
                     if(typeDefinitionPart()){
                         if(variableDeclarationPart()){
-                            
+                            if(procedureAndFunctionDeclarationPart()){
+                                if(compundStatement()){
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+                            }else{
+                                return false;
+                            }
+                        }else{
+                            return false;
                         }
+                    }else{
+                        return false;
                     }
+                }else{
+                    return false;
                 }
+            }else{
+                return false;
             }
+        }else{
+            return true;
         }
-        return true;
     }
     /**
      * LE FALTA RECURSIVIDAD
