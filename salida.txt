@@ -1,3 +1,1 @@
-program lol;
-begin
-end.
+program hola; label 4; const hola=5;begin hola:=mundo end.begin end
