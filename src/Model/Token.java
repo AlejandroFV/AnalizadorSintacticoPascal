@@ -12,11 +12,10 @@ package Model;
 public enum Token {
     OP,
     CHAR,
-    INT,
+    NUMERO,
     RESERVADA,
     CADENA,
     IDENT,
-    REAL,
     ERROR,
     BLANCO,
     SEMI,
