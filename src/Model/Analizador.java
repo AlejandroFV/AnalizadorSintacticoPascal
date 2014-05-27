@@ -83,10 +83,9 @@ public class Analizador {
                 removerSecuencia();
                 if(!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("SEMI")){
                     removerSecuencia();
-                    blanco();
+                    block();
                     if(!(listaTokens.isEmpty()) && (listaTokens.get(0).toString().equals("RESERVADA") && (listaLexemas.get(0).toString().equals("BEGIN") || listaLexemas.get(0).toString().equals("begin")))){
                         removerSecuencia();
-                        //block();
                         if (!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("BLANCO")) {
                             removerSecuencia();
                             if(!(listaTokens.isEmpty()) && (listaTokens.get(0).toString().equals("RESERVADA") && (listaLexemas.get(0).toString().equals("END") || listaLexemas.get(0).toString().equals("end")))){
@@ -880,7 +879,7 @@ public class Analizador {
                     return false;
                 }
             }else{
-                throw new sintaxError("se esperaba la palabra procedure despues de "+actualLexer);
+                return false;
             }
         }else{
             return false;
@@ -1036,7 +1035,7 @@ public class Analizador {
                     return false;
                 }
             }else{
-                throw new sintaxError("se esperaba la palabra function despues de "+actualLexer);
+                return false;
             }
         }else{
             return false;
