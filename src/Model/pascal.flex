@@ -110,7 +110,7 @@ keyword        =
 ":="            { return OP; }
 
 ";"             { return SEMI; }
-"."             { return PUNTO; }
+"."             { return DOT; }
 
 /* identifier */
 {identifier}    { return IDENT; }
