@@ -72,7 +72,7 @@ public class Analizador {
         return "Vacío. Escribe algo";
     }
     /**
-     * metodo que representa <program> ::= program <identifier> ; <block> .
+     * metodo que representa  program  ::= program  identifier  ;  block  .
      * @return boolean si se cumple la sintaxis
      * @throws sintaxError 
      */
@@ -117,9 +117,9 @@ public class Analizador {
         } 
     }
     /**
-     * metodo que representa <block> ::= <label declaration part> <constant definition part> 
-     * <type definition part> <variable declaration part><procedure and function declaration part>
-     * <statement part>
+     * metodo que representa  block  ::=  label declaration part   constant definition part  
+     *  type definition part   variable declaration part  procedure and function declaration part 
+     *  statement part 
      * @return boolean true si se cumpl la sintaxis
      * @throws sintaxError 
      */
@@ -156,7 +156,7 @@ public class Analizador {
         }
     }
     /**
-     * <label declaration part> ::= <empty> | label <label> {, <label>} ;
+     *  label declaration part  ::=  empty  | label  label  {,  label } ;
      * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
@@ -184,7 +184,7 @@ public class Analizador {
         }
     }
     /**
-     * <constant definition part> ::= <empty> | const <constant definition> { ; <constant definition>} ;
+     *  constant definition part  ::=  empty  | const  constant definition  { ;  constant definition } ;
      * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
@@ -211,7 +211,7 @@ public class Analizador {
         }
     }
     /**
-     * <type definition part> ::= <empty> | type <type definition> {;<type definition>};
+     *  type definition part  ::=  empty  | type  type definition  {; type definition };
      * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
@@ -239,7 +239,7 @@ public class Analizador {
         }
     }
     /**
-     * <variable declaration part> ::= <empty> | var <variable declaration> {; <variable declaration>} ;
+     *  variable declaration part  ::=  empty  | var  variable declaration  {;  variable declaration } ;
      * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
@@ -267,7 +267,7 @@ public class Analizador {
         }
     } 
     /**
-     * <constant definition> ::= <identifier> = <constant>
+     *  constant definition  ::=  identifier  =  constant 
      * @return true si la sintaxis se cumple
      * @throws sintaxError 
      */
@@ -289,7 +289,7 @@ public class Analizador {
         }  
     }
     /**
-     * <type definition> ::= <identifier> = <type>
+     *  type definition  ::=  identifier  =  type 
      * @return true si la sintaxis se cumple
      * @throws sintaxError 
      */
@@ -311,7 +311,7 @@ public class Analizador {
         }       
     }
     /**
- * <variable declaration> ::= <identifier> {,<identifier>} : <type>
+ *  variable declaration  ::=  identifier  {, identifier } :  type 
  * @return true si la sintaxis se cumple
  * @throws sintaxError 
  */
@@ -364,7 +364,7 @@ public class Analizador {
             
     } 
     /**
-     * <constant identifier> ::= <identifier>
+     *  constant identifier  ::=  identifier 
      * @return true en si esta bien la sintaxis
      * @throws sintaxError 
      */
@@ -382,7 +382,7 @@ public class Analizador {
         }
     }
     /**
-     * <unsigned number> ::= <unsigned integer> | <unsigned real>
+     *  unsigned number  ::=  unsigned integer  |  unsigned real 
      * @return true si la sontaxis es correcta
      * @throws sintaxError 
      */
@@ -400,7 +400,7 @@ public class Analizador {
         }
     }
     /**
-     * <string> ::= '<character> {<character>}'
+     *  string  ::= ' character  { character }'
      * @return true si la sontaxis es correcta
      * @throws sintaxError 
      */
@@ -418,7 +418,7 @@ public class Analizador {
         }
     }
     /**
-     * <sign> ::= + | -
+     *  sign  ::= + | -
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -437,8 +437,8 @@ public class Analizador {
         }
     }
     /**
-     * <type> ::= <simple type> | <structured type> | <pointer type>
-     * @returntrue si la sintaxis es correcta
+     *  type  ::=  simple type  |  structured type  |  pointer type 
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean type() throws sintaxError{
@@ -458,7 +458,7 @@ public class Analizador {
         }     
     }
     /**
-     * <simple type> ::= <scalar type> | <subrange type> | <type identifier>
+     *  simple type  ::=  scalar type  |  subrange type  |  type identifier 
      * @return true si la sintaxxis es correcta
      * @throws sintaxError 
      */
@@ -479,7 +479,7 @@ public class Analizador {
         }
     }
     /**
-     * <structured type> ::= <array type> | <record type> | <set type> | <file type>
+     *  structured type  ::=  array type  |  record type  |  set type  |  file type 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -504,7 +504,7 @@ public class Analizador {
         }
     }
     /**
-     * <file type> ::= file of <type>
+     *  file type  ::= file of  type 
      * @return tru si la sitaxis es correcta
      * @throws sintaxError 
      */
@@ -531,7 +531,7 @@ public class Analizador {
         }
     }
     /**
-     * <set type> ::=set of <base type>
+     *  set type  ::=set of  base type 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -558,7 +558,7 @@ public class Analizador {
         }
     }
     /**
-     * <array type> ::= array [<index type>{,<index type>}] of <component type>
+     *  array type  ::= array [ index type {, index type }] of  component type 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -618,7 +618,7 @@ public class Analizador {
         }
     }
     /**
-     * <record type> ::= record <field list> end
+     *  record type  ::= record  field list  end
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -647,7 +647,7 @@ public class Analizador {
         }
     }
     /**
-     * <field list> ::= <fixed part> | <fixed part> ; <variant part> | <variant part>
+     *  field list  ::=  fixed part  |  fixed part  ;  variant part  |  variant part 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -660,7 +660,7 @@ public class Analizador {
         }
     }
     /**
-     * <fixed part> ::= <record section> {;<record section>}
+     *  fixed part  ::=  record section  {; record section }
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -682,7 +682,7 @@ public class Analizador {
         }
     }
     /**
-     * <record section> ::= <field identifier> {, <field identifier>} : <type> | <empty>
+     *  record section  ::=  field identifier  {,  field identifier } :  type  |  empty 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -718,7 +718,7 @@ public class Analizador {
         }
     }  
     /**
-     * <scalar type> ::= (<identifier> {,<identifier>})
+     *  scalar type  ::= ( identifier  {, identifier })
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -736,7 +736,7 @@ public class Analizador {
        }return false;
     }
     /**
-     * <subrange type> ::= <constant> .. <constant>
+     *  subrange type  ::=  constant  ..  constant 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -763,7 +763,7 @@ public class Analizador {
         }
     } 
     /**
-     * verifica que sea un identifier <identifier>:=[letra]{letra|numero}
+     * verifica que sea un identifier  identifier :=[letra]{letra|numero}
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -782,7 +782,7 @@ public class Analizador {
         }
     }
     /**
-     * <procedure and function declaration part> ::= {<procedure or function declaration > ;}
+     *  procedure and function declaration part  ::= { procedure or function declaration   ;}
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -804,7 +804,7 @@ public class Analizador {
         }
     }
     /**
-     * <procedure or function declaration > ::= <procedure declaration > | <function declaration >
+     *  procedure or function declaration   ::=  procedure declaration   |  function declaration  
      * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
@@ -821,7 +821,7 @@ public class Analizador {
         }
     }
     /**
-     * <procedure declaration> ::= <procedure heading> <block>
+     *  procedure declaration  ::=  procedure heading   block 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -838,8 +838,8 @@ public class Analizador {
         }
     }
     /**
-     * <procedure heading> ::= procedure <identifier> ; | procedure <identifier> 
-     * ( <formal parameter section> {;<formal parameter section>} );
+     *  procedure heading  ::= procedure  identifier  ; | procedure  identifier  
+     * (  formal parameter section  {; formal parameter section } );
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -886,7 +886,7 @@ public class Analizador {
         }
     }
     /**
-     * <formal parameter section> ::= <parameter group> | var <parameter group> |
+     *  formal parameter section  ::=  parameter group  | var  parameter group  |
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -930,7 +930,7 @@ public class Analizador {
         }
     }
     /**
-     * <parameter group> ::= <identifier> {, <identifier>} : <type identifier>
+     *  parameter group  ::=  identifier  {,  identifier } :  type identifier 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -958,7 +958,7 @@ public class Analizador {
         }
     }
     /**
-     * <function declaration> ::= <function heading> <block>
+     *  function declaration  ::=  function heading   block 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -975,9 +975,9 @@ public class Analizador {
         }
     }
     /**
-     * <function heading> ::= function <identifier> : <result type> ; |
-     * function <identifier> ( <formal parameter section> 
-     * {;<formal parameter section>} ) : <result type> ;
+     *  function heading  ::= function  identifier  :  result type  ; |
+     * function  identifier  (  formal parameter section  
+     * {; formal parameter section } ) :  result type  ;
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1042,7 +1042,7 @@ public class Analizador {
         }
     }
     /**
-     * <statement> ::= <unlabelled statement> | <label> : <unlabelled statement>
+     *  statement  ::=  unlabelled statement  |  label  :  unlabelled statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1068,7 +1068,7 @@ public class Analizador {
         }
     }
     /**
-     * <unlabelled statement> ::= <simple statement> | <structured statement>
+     *  unlabelled statement  ::=  simple statement  |  structured statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1081,8 +1081,8 @@ public class Analizador {
         }
     }
     /**
-     * <simple statement> ::= <assignment statement> | <procedure statement> | 
-     * <go to statement> | <empty statement>
+     *  simple statement  ::=  assignment statement  |  procedure statement  | 
+     *  go to statement  |  empty statement 
      * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
@@ -1095,7 +1095,7 @@ public class Analizador {
         }
     }
     /**
-     * <assignment statement> ::= <variable> := <expression> | <function identifier> := <expression>
+     *  assignment statement  ::=  variable  :=  expression  |  function identifier  :=  expression 
      * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
@@ -1125,7 +1125,7 @@ public class Analizador {
         }
     }
     /**
-     * <variable> ::= <entire variable> | <component variable> | <referenced variable>
+     *  variable  ::=  entire variable  |  component variable  |  referenced variable 
      * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
@@ -1138,7 +1138,7 @@ public class Analizador {
         }
     }
     /**
-     * <component variable> ::= <indexed variable> | <field designator> | <file buffer>
+     *  component variable  ::=  indexed variable  |  field designator  |  file buffer 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1151,7 +1151,7 @@ public class Analizador {
         }
     }
     /**
-     * <indexed variable> ::= <array variable> [<expression> {, <expression>}]
+     *  indexed variable  ::=  array variable  [ expression  {,  expression }]
      * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
@@ -1182,8 +1182,8 @@ public class Analizador {
         }
     }
     /**
-     * <expression> ::= <simple expression> | 
-     * <simple expression> <relational operator> <simple expression>
+     *  expression  ::=  simple expression  | 
+     *  simple expression   relational operator   simple expression 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1205,7 +1205,7 @@ public class Analizador {
         }
     }
     /**
-     * <simple expression> ::= <term> | <sign> <term>| <simple expression> <adding operator> <term>
+     *  simple expression  ::=  term  |  sign   term |  simple expression   adding operator   term 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1234,7 +1234,7 @@ public class Analizador {
         }
     }
     /**
-     * <term> ::= <factor> | <term> <multiplying operator> <factor>
+     *  term  ::=  factor  |  term   multiplying operator   factor 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1259,8 +1259,8 @@ public class Analizador {
         }
     }
     /**
-     * <factor> ::= <variable> | <unsigned constant> | ( <expression> ) | 
-     * <function designator> | <set> | not <factor>
+     *  factor  ::=  variable  |  unsigned constant  | (  expression  ) | 
+     *  function designator  |  set  | not  factor 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1308,7 +1308,7 @@ public class Analizador {
         }
     }
     /**
-     * <compound statement> ::= begin <statement> {; <statement> } end;
+     *  compound statement  ::= begin  statement  {;  statement  } end;
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1342,7 +1342,7 @@ public class Analizador {
         }
     }
     /**
-     * <unsigned constant> ::= <unsigned number> | <string> | < constant identifier> < nil>
+     *  unsigned constant  ::=  unsigned number  |  string  |   constant identifier    nil 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1362,8 +1362,8 @@ public class Analizador {
         return false;
     }
     /**
-     * <function designator> ::= <function identifier> | <function identifier 
-     * ( <actual parameter> {, <actual parameter>} )
+     *  function designator  ::=  function identifier  |  function identifier 
+     * (  actual parameter  {,  actual parameter } )
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1395,8 +1395,8 @@ public class Analizador {
         }
     }
     /**
-     * <actual parameter> ::= <expression> | <variable> | 
-     * <procedure identifier> | <function identifier>
+     *  actual parameter  ::=  expression  |  variable  | 
+     *  procedure identifier  |  function identifier 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1409,7 +1409,7 @@ public class Analizador {
         }   
     }
     /**
-     * <set> ::= [ <element list> ]
+     *  set  ::= [  element list  ]
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1435,7 +1435,7 @@ public class Analizador {
         }
     }
     /**
-     * <multiplying operator> ::= * | / | div | mod | and
+     *  multiplying operator  ::= * | / | div | mod | and
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1469,7 +1469,7 @@ public class Analizador {
         }
     }
     /**
-     * <adding operator> ::= + | - | or
+     *  adding operator  ::= + | - | or
      * @return true si la sintaxis s valida
      * @throws sintaxError 
      */
@@ -1501,7 +1501,7 @@ public class Analizador {
         }
     }
     /**
-     * <relational operator> ::= = | <> | < | <= | >= | > | in
+     *  relational operator  ::= = |    |   |  = |  = |   | in
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1510,11 +1510,11 @@ public class Analizador {
         if(!listaTokens.isEmpty()){
             if(listaTokens.get(0).toString().equals("OP")){
                 if(listaLexemas.get(0).toString().equals("==")||
-                   listaLexemas.get(0).toString().equals("<>")||
-                   listaLexemas.get(0).toString().equals("<")||
-                   listaLexemas.get(0).toString().equals("<=")||
-                   listaLexemas.get(0).toString().equals(">=")||
-                   listaLexemas.get(0).toString().equals(">")){
+                   listaLexemas.get(0).toString().equals("  ")||
+                   listaLexemas.get(0).toString().equals(" ")||
+                   listaLexemas.get(0).toString().equals(" =")||
+                   listaLexemas.get(0).toString().equals(" =")||
+                   listaLexemas.get(0).toString().equals(" ")){
                     removerSecuencia();
                    return true;
                 }else{
@@ -1537,7 +1537,7 @@ public class Analizador {
         }
     }
     /**
-     * <field designator> ::= <record variable> . <field identifier>
+     *  field designator  ::=  record variable  .  field identifier 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1559,8 +1559,8 @@ public class Analizador {
         }
     }
     /**
-     * <procedure statement> ::= <procedure identifier> | 
-     * <procedure identifier> (<actual parameter> {, <actual parameter> })
+     *  procedure statement  ::=  procedure identifier  | 
+     *  procedure identifier  ( actual parameter  {,  actual parameter  })
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1592,7 +1592,7 @@ public class Analizador {
         }
     }
     /**
-     * <go to statement> ::= goto <label>
+     *  go to statement  ::= goto  label 
      * @return tru si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1611,8 +1611,8 @@ public class Analizador {
         }
     }
     /**
-     * <structured statement> ::= <compound statement> | <conditional statement> |
-     * <repetitive statement> | <with statement>
+     *  structured statement  ::=  compound statement  |  conditional statement  |
+     *  repetitive statement  |  with statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1625,7 +1625,7 @@ public class Analizador {
         }
     }
     /**
-     * <compound statement> ::= begin <statement> {; <statement> } end;
+     *  compound statement  ::= begin  statement  {;  statement  } end;
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1654,7 +1654,7 @@ public class Analizador {
         }
     }
     /**
-     * <conditional statement> ::= <if statement> | <case statement>
+     *  conditional statement  ::=  if statement  |  case statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1667,8 +1667,8 @@ public class Analizador {
         }
     }
     /**
-     * <if statement> ::= if <expression> then <statement> | 
-     * if <expression> then <statement> else <statement>
+     *  if statement  ::= if  expression  then  statement  | 
+     * if  expression  then  statement  else  statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1707,8 +1707,8 @@ public class Analizador {
         }
     }
     /**
-     * <case statement> ::= case <expression> of <case list element> 
-     * {; <case list element> } end
+     *  case statement  ::= case  expression  of  case list element  
+     * {;  case list element  } end
      * @return tru si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1747,7 +1747,7 @@ public class Analizador {
         }
     }
     /**
-     * <case list element> ::= <case label list> : <statement> | <empty>
+     *  case list element  ::=  case label list  :  statement  |  empty 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1769,7 +1769,7 @@ public class Analizador {
         }
     }
     /**
-     * <case label list> ::= <case label> {, <case label> }
+     *  case label list  ::=  case label  {,  case label  }
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1791,7 +1791,7 @@ public class Analizador {
         }
     }
     /**
-     * <repetitive statement> ::= <while statement> | <repeat statemant> | <for statement>
+     *  repetitive statement  ::=  while statement  |  repeat statemant  |  for statement 
      * @return trus si la sitxis es correcta
      * @throws sintaxError 
      */
@@ -1804,7 +1804,7 @@ public class Analizador {
         }
     }
     /**
-     * <while statement> ::= while <expression> do <statement>
+     *  while statement  ::= while  expression  do  statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1833,7 +1833,7 @@ public class Analizador {
         }
     }
     /**
-     * <repeat statement> ::= repeat <statement> {; <statement>} until <expression>
+     *  repeat statement  ::= repeat  statement  {;  statement } until  expression 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1862,7 +1862,7 @@ public class Analizador {
         }
     }
     /**
-     * <with statement> ::= with <record variable list> do <statement>
+     *  with statement  ::= with  record variable list  do  statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1891,7 +1891,7 @@ public class Analizador {
         }
     }
     /**
-     * <record variable list> ::= <record variable> {, <record variable>}
+     *  record variable list  ::=  record variable  {,  record variable }
      * @return true si la sintaxis es correta
      * @throws sintaxError 
      */
@@ -1913,7 +1913,7 @@ public class Analizador {
         }
     }
     /**
-     * <for statement> ::= for <control variable> := <for list> do <statement>
+     *  for statement  ::= for  control variable  :=  for list  do  statement 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1950,7 +1950,7 @@ public class Analizador {
         }
     }
     /**
-     * <for list> ::= <initial value> to <final value> | <initial value> downto <final value>
+     *  for list  ::=  initial value  to  final value  |  initial value  downto  final value 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1977,7 +1977,7 @@ public class Analizador {
         }
     }
     /**
-     * <element list> ::= <element> {, <element> } | <empty>
+     *  element list  ::=  element  {,  element  } |  empty 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
@@ -1998,7 +1998,7 @@ public class Analizador {
         }
     }
     /**
-     * <element> ::= <expression> | <expression> .. <expression>
+     *  element  ::=  expression  |  expression  ..  expression 
      * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
