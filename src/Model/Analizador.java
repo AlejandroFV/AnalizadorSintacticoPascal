@@ -332,21 +332,26 @@ public class Analizador {
             return false;
         }
     }
-    //LE FALTA
+    /**
+     * 
+     * @return
+     * @throws sintaxError 
+     */
     private boolean constant() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
-            if(listaTokens.get(0).toString().equals("OP")&&(listaLexemas.get(0).toString().equals("+")||
-               listaTokens.get(0).toString().equals("-"))){
-                removerSecuencia();
-               if(constantIdentifier()){
-                   return true;
-               }else{
-                    return unsignedNumber();
-               }
+            if(unsignedNumber()||constantIdentifier()){
+                return true;
             }else{
-                return false;
-                //lo que falta 'lol'
+                if(sign()){
+                    if(unsignedNumber()||constantIdentifier()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
             }
         }else{
             return false;
