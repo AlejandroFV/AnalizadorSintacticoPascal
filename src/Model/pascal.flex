@@ -27,11 +27,16 @@ EspacioBlanco   = {finLinea}|[ \t\f]
 identifier      = [:jletter:][:jletterdigit:]*
 
 /* integer */
-integer         = 0|[1-9][0-9]*
+EnteroDecimal         = 0|[1-9][0-9]*
 
-/* real */
-real            = {integer}\.[0-9]{exponente}
-exponente       = E[+-]?{integer}
+/* floating point literals */
+LiteralFlotante = ({FLit1}|{FLit2}|{FLit3}) {Exponente}? [fF]
+LiteralDoble = ({FLit1}|{FLit2}|{FLit3}) {Exponente}?
+
+FLit1 = [0-9]+ \. [0-9]*
+FLit2 = \. [0-9]+
+FLit3 = [0-9]+
+Exponente = [eE] [+-]? [0-9]+
 
 /* string and character */
 CadenaCaracter = [^\r\n\"\\]
@@ -85,6 +90,7 @@ keyword        =
 /* operadores */
 "*"             { return OP; }
 "+"             { return OP; }
+".."            { return OP; }
 "-"             { return OP; }
 "/"             { return OP; }
 ","             { return OP; }
@@ -97,19 +103,22 @@ keyword        =
 ">"             { return OP; }
 "<="            { return OP; }
 ">="            { return OP; }
+"<>"            { return OP; }
 "!="            { return OP; }
 ":"             { return OP; }
+"=="            { return OP; }
 ":="            { return OP; }
 
 ";"             { return SEMI; }
-"."             { return DOT; }
+"."             { return PUNTO; }
 
 /* identifier */
 {identifier}    { return IDENT; }
 
 /* number */
-{integer}       { return INT; }
-{real}          { return REAL; }
+{EnteroDecimal}       { return NUMERO; }
+{LiteralFlotante}     { return NUMERO; }
+{LiteralDoble}        { return NUMERO; }
 
 /* string */
 \"{CadenaCaracter}+\"        { return CADENA; }
