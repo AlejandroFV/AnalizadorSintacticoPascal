@@ -268,8 +268,8 @@ public class Analizador {
         }
     } 
     /**
-     * 
-     * @return
+     * <constant definition> ::= <identifier> = <constant>
+     * @return true si la sintaxis se cumple
      * @throws sintaxError 
      */
     private boolean constantDefinition() throws sintaxError{
@@ -290,8 +290,8 @@ public class Analizador {
         }  
     }
     /**
-     * 
-     * @return
+     * <type definition> ::= <identifier> = <type>
+     * @return true si la sintaxis se cumple
      * @throws sintaxError 
      */
     private boolean typeDefinition() throws sintaxError {
@@ -312,8 +312,8 @@ public class Analizador {
         }       
     }
     /**
- * 
- * @return
+ * <variable declaration> ::= <identifier> {,<identifier>} : <type>
+ * @return true si la sintaxis se cumple
  * @throws sintaxError 
  */
     private boolean variableDeclaration() throws sintaxError {
@@ -339,8 +339,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * este metodo define una constante para la sintaxis
+     * @return true si la sintaxis se cumple
      * @throws sintaxError 
      */
     private boolean constant() throws sintaxError{
@@ -365,8 +365,8 @@ public class Analizador {
             
     } 
     /**
-     * 
-     * @return
+     * <constant identifier> ::= <identifier>
+     * @return true en si esta bien la sintaxis
      * @throws sintaxError 
      */
     public boolean constantIdentifier() throws sintaxError{
@@ -383,8 +383,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <unsigned number> ::= <unsigned integer> | <unsigned real>
+     * @return true si la sontaxis es correcta
      * @throws sintaxError 
      */
     public boolean unsignedNumber() throws sintaxError{
@@ -400,7 +400,11 @@ public class Analizador {
             return false;
         }
     }
-    //LE FALTA
+    /**
+     * <string> ::= '<character> {<character>}'
+     * @return true si la sontaxis es correcta
+     * @throws sintaxError 
+     */
     public boolean string() throws sintaxError{
         blanco();
         if(!listaTokens.isEmpty()){
@@ -415,8 +419,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <sign> ::= + | -
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean sign() throws sintaxError{
@@ -434,8 +438,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <type> ::= <simple type> | <structured type> | <pointer type>
+     * @returntrue si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean type() throws sintaxError{
@@ -455,8 +459,8 @@ public class Analizador {
         }     
     }
     /**
-     * 
-     * @return
+     * <simple type> ::= <scalar type> | <subrange type> | <type identifier>
+     * @return true si la sintaxxis es correcta
      * @throws sintaxError 
      */
     public boolean simpleType() throws sintaxError{
@@ -476,8 +480,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <structured type> ::= <array type> | <record type> | <set type> | <file type>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean structuredType() throws sintaxError{
@@ -501,8 +505,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <file type> ::= file of <type>
+     * @return tru si la sitaxis es correcta
      * @throws sintaxError 
      */
     public boolean fileType() throws sintaxError{
@@ -528,8 +532,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <set type> ::=set of <base type>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean setType() throws sintaxError{
@@ -555,8 +559,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <array type> ::= array [<index type>{,<index type>}] of <component type>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean arrayType() throws sintaxError{
@@ -615,8 +619,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <record type> ::= record <field list> end
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean recordType() throws sintaxError{
@@ -644,8 +648,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <field list> ::= <fixed part> | <fixed part> ; <variant part> | <variant part>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean fieldList() throws sintaxError{
@@ -657,8 +661,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <fixed part> ::= <record section> {;<record section>}
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean fixedPart() throws sintaxError{
@@ -679,8 +683,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <record section> ::= <field identifier> {, <field identifier>} : <type> | <empty>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean recordSection() throws sintaxError{
@@ -715,8 +719,8 @@ public class Analizador {
         }
     }  
     /**
-     * 
-     * @return
+     * <scalar type> ::= (<identifier> {,<identifier>})
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean scalarType() throws sintaxError{
@@ -733,8 +737,8 @@ public class Analizador {
        }return false;
     }
     /**
-     * 
-     * @return
+     * <subrange type> ::= <constant> .. <constant>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean subrangeType() throws sintaxError{
@@ -760,8 +764,8 @@ public class Analizador {
         }
     } 
     /**
-     * 
-     * @return
+     * verifica que sea un identifier <identifier>:=[letra]{letra|numero}
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean identifier()throws sintaxError{
@@ -779,8 +783,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <procedure and function declaration part> ::= {<procedure or function declaration > ;}
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean procedureAndFunctionDeclarationPart() throws sintaxError{
@@ -801,8 +805,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <procedure or function declaration > ::= <procedure declaration > | <function declaration >
+     * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
     public boolean procedureOrFunctionDeclaration() throws sintaxError{
@@ -818,8 +822,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <procedure declaration> ::= <procedure heading> <block>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean procedureDeclaration() throws sintaxError{
@@ -835,8 +839,9 @@ public class Analizador {
         }
     }
     /**
-     * FALTA RECURSIVIDAD
-     * @return 
+     * <procedure heading> ::= procedure <identifier> ; | procedure <identifier> 
+     * ( <formal parameter section> {;<formal parameter section>} );
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean procedureHeading() throws sintaxError{
@@ -882,8 +887,8 @@ public class Analizador {
         }
     }
     /**
-     * CHECAR SU RECURSIVIDAD
-     * @return
+     * <formal parameter section> ::= <parameter group> | var <parameter group> |
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean formalParameterSection() throws sintaxError{
@@ -926,8 +931,8 @@ public class Analizador {
         }
     }
     /**
-     * CHECAR LA RECURSIVIDAD
-     * @return
+     * <parameter group> ::= <identifier> {, <identifier>} : <type identifier>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean parameterGroup() throws sintaxError{
@@ -954,8 +959,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <function declaration> ::= <function heading> <block>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean functionDeclaration() throws sintaxError{
@@ -971,8 +976,10 @@ public class Analizador {
         }
     }
     /**
-     * FALTO RECURSIVIDAD
-     * @return 
+     * <function heading> ::= function <identifier> : <result type> ; |
+     * function <identifier> ( <formal parameter section> 
+     * {;<formal parameter section>} ) : <result type> ;
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean functionHeading() throws sintaxError{
@@ -1036,8 +1043,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <statement> ::= <unlabelled statement> | <label> : <unlabelled statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean statement() throws sintaxError{
@@ -1062,8 +1069,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <unlabelled statement> ::= <simple statement> | <structured statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean unlabelledStatement() throws sintaxError{
@@ -1075,8 +1082,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <simple statement> ::= <assignment statement> | <procedure statement> | 
+     * <go to statement> | <empty statement>
+     * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
     public boolean simpleStatement() throws sintaxError{
@@ -1088,8 +1096,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <assignment statement> ::= <variable> := <expression> | <function identifier> := <expression>
+     * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
     public boolean assignmentStatement() throws sintaxError{
@@ -1118,8 +1126,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <variable> ::= <entire variable> | <component variable> | <referenced variable>
+     * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
     public boolean variable() throws sintaxError{
@@ -1131,8 +1139,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <component variable> ::= <indexed variable> | <field designator> | <file buffer>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean componentVariable() throws sintaxError{
@@ -1144,8 +1152,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <indexed variable> ::= <array variable> [<expression> {, <expression>}]
+     * @return true si la sintaxis es correcta 
      * @throws sintaxError 
      */
     public boolean indexedVariable() throws sintaxError{
@@ -1175,8 +1183,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <expression> ::= <simple expression> | 
+     * <simple expression> <relational operator> <simple expression>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean expression() throws sintaxError{
@@ -1187,7 +1196,7 @@ public class Analizador {
                     return expression();
                 }else{
                     //puede que despues de la expresion no venga nada
-                    return false;
+                    return true;
                 }
             }else{
                 return false;
@@ -1197,8 +1206,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <simple expression> ::= <term> | <sign> <term>| <simple expression> <adding operator> <term>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean simpleExpression() throws sintaxError{
@@ -1226,8 +1235,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <term> ::= <factor> | <term> <multiplying operator> <factor>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean term() throws sintaxError{
@@ -1251,8 +1260,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <factor> ::= <variable> | <unsigned constant> | ( <expression> ) | 
+     * <function designator> | <set> | not <factor>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean factor() throws sintaxError{
@@ -1299,8 +1309,8 @@ public class Analizador {
         }
     }
     /**
-     * FALTO RECURSIVIDAD
-     * @return
+     * <compound statement> ::= begin <statement> {; <statement> } end;
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean compundStatement() throws sintaxError{
@@ -1333,8 +1343,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <unsigned constant> ::= <unsigned number> | <string> | < constant identifier> < nil>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean unsignedConstant() throws sintaxError{
@@ -1353,8 +1363,9 @@ public class Analizador {
         return false;
     }
     /**
-     * falta recursividad
-     * @return
+     * <function designator> ::= <function identifier> | <function identifier 
+     * ( <actual parameter> {, <actual parameter>} )
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean functionDesignator() throws sintaxError{
@@ -1374,7 +1385,7 @@ public class Analizador {
                         return false;
                     }
                 }else{
-                    //despues del identificador puede que no valla nada
+                    //despues del identificador puede que no venga nada
                     return true;
                 }
             }else{
@@ -1385,8 +1396,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <actual parameter> ::= <expression> | <variable> | 
+     * <procedure identifier> | <function identifier>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean actualParameter() throws sintaxError{
@@ -1398,8 +1410,8 @@ public class Analizador {
         }   
     }
     /**
-     * 
-     * @return
+     * <set> ::= [ <element list> ]
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean set() throws sintaxError {
@@ -1424,8 +1436,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <multiplying operator> ::= * | / | div | mod | and
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean multiplyingOperator() throws sintaxError{
@@ -1458,8 +1470,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <adding operator> ::= + | - | or
+     * @return true si la sintaxis s valida
      * @throws sintaxError 
      */
     public boolean addingOperator() throws sintaxError {
@@ -1490,8 +1502,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <relational operator> ::= = | <> | < | <= | >= | > | in
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean relationalOperator() throws sintaxError{
@@ -1526,8 +1538,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <field designator> ::= <record variable> . <field identifier>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean fieldDesignator() throws sintaxError {
@@ -1548,8 +1560,9 @@ public class Analizador {
         }
     }
     /**
-     * FALTA RECURSIVIDAD
-     * @return
+     * <procedure statement> ::= <procedure identifier> | 
+     * <procedure identifier> (<actual parameter> {, <actual parameter> })
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean procedureStatement() throws sintaxError{
@@ -1580,8 +1593,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <go to statement> ::= goto <label>
+     * @return tru si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean goToStatement() throws sintaxError{
@@ -1599,8 +1612,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <structured statement> ::= <compound statement> | <conditional statement> |
+     * <repetitive statement> | <with statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean structuredStatement() throws sintaxError{
@@ -1612,8 +1626,8 @@ public class Analizador {
         }
     }
     /**
-     * FALTA RECURSIVIDAD
-     * @return
+     * <compound statement> ::= begin <statement> {; <statement> } end;
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean compoundStatement() throws sintaxError{
@@ -1641,8 +1655,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <conditional statement> ::= <if statement> | <case statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean conditionalStatement() throws sintaxError{
@@ -1654,8 +1668,9 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <if statement> ::= if <expression> then <statement> | 
+     * if <expression> then <statement> else <statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean ifStatement() throws sintaxError{
@@ -1693,8 +1708,9 @@ public class Analizador {
         }
     }
     /**
-     * FALTA RECURSIVIDAD
-     * @return
+     * <case statement> ::= case <expression> of <case list element> 
+     * {; <case list element> } end
+     * @return tru si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean caseStatement() throws sintaxError{
@@ -1732,8 +1748,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <case list element> ::= <case label list> : <statement> | <empty>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean caseListElement() throws sintaxError{
@@ -1754,8 +1770,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <case label list> ::= <case label> {, <case label> }
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean caseLabelList() throws sintaxError{
@@ -1776,8 +1792,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <repetitive statement> ::= <while statement> | <repeat statemant> | <for statement>
+     * @return trus si la sitxis es correcta
      * @throws sintaxError 
      */
     public boolean repetitiveStatement() throws sintaxError{
@@ -1789,8 +1805,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <while statement> ::= while <expression> do <statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean whileStatement() throws sintaxError{
@@ -1818,8 +1834,8 @@ public class Analizador {
         }
     }
     /**
-     * FALTO RECURSIVIDAD
-     * @return
+     * <repeat statement> ::= repeat <statement> {; <statement>} until <expression>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean repeatStatemant() throws sintaxError{
@@ -1847,8 +1863,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <with statement> ::= with <record variable list> do <statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean withStatement() throws sintaxError{
@@ -1876,8 +1892,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <record variable list> ::= <record variable> {, <record variable>}
+     * @return true si la sintaxis es correta
      * @throws sintaxError 
      */
     public boolean recordVariableList() throws sintaxError{
@@ -1898,8 +1914,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <for statement> ::= for <control variable> := <for list> do <statement>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean forStatement() throws sintaxError{
@@ -1935,8 +1951,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <for list> ::= <initial value> to <final value> | <initial value> downto <final value>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean forList() throws sintaxError{
@@ -1962,8 +1978,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <element list> ::= <element> {, <element> } | <empty>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean elementList() throws sintaxError{
@@ -1983,8 +1999,8 @@ public class Analizador {
         }
     }
     /**
-     * 
-     * @return
+     * <element> ::= <expression> | <expression> .. <expression>
+     * @return true si la sintaxis es correcta
      * @throws sintaxError 
      */
     public boolean element() throws sintaxError{
