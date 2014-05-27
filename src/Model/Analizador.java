@@ -71,7 +71,11 @@ public class Analizador {
         }
         return "Vacío. Escribe algo";
     }
-    
+    /**
+     * metodo que representa <program> ::= program <identifier> ; <block> .
+     * @return boolean si se cumple la sintaxis
+     * @throws sintaxError 
+     */
     public boolean program()throws sintaxError{
         if (!(listaTokens.isEmpty()) && listaTokens.get(0).toString().equals("BLANCO")) {
             removerSecuencia();
@@ -114,8 +118,10 @@ public class Analizador {
         } 
     }
     /**
-     * 
-     * @return
+     * metodo que representa <block> ::= <label declaration part> <constant definition part> 
+     * <type definition part> <variable declaration part><procedure and function declaration part>
+     * <statement part>
+     * @return boolean true si se cumpl la sintaxis
      * @throws sintaxError 
      */
     private boolean block() throws sintaxError{
@@ -151,8 +157,8 @@ public class Analizador {
         }
     }
     /**
-     * LE FALTA RECURSIVIDAD
-     * @return
+     * <label declaration part> ::= <empty> | label <label> {, <label>} ;
+     * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
     public boolean labelDeclarationPart() throws sintaxError{
@@ -179,8 +185,8 @@ public class Analizador {
         }
     }
     /**
-     * LE FALTA RECURSIVIDAD
-     * @return
+     * <constant definition part> ::= <empty> | const <constant definition> { ; <constant definition>} ;
+     * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
     public boolean constantDefinitionPart() throws sintaxError{
@@ -206,8 +212,8 @@ public class Analizador {
         }
     }
     /**
-     * LE FALTA SU RECURSIVIDAD
-     * @return
+     * <type definition part> ::= <empty> | type <type definition> {;<type definition>};
+     * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
     public boolean typeDefinitionPart()throws sintaxError{
@@ -234,8 +240,8 @@ public class Analizador {
         }
     }
     /**
-     * LE FALTA RECURSIVIDAD
-     * @return
+     * <variable declaration part> ::= <empty> | var <variable declaration> {; <variable declaration>} ;
+     * @return true si se cumple la sintaxis
      * @throws sintaxError 
      */
     public boolean variableDeclarationPart()throws sintaxError{
